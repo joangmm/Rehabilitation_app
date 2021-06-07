@@ -14,6 +14,10 @@ TagManager:
   - YellowBall
   - Wall
   - DestroyingCol
+  - watermelon
+  - orange
+  - apple
+  - carrot
   layers:
   - Default
   - TransparentFX
@@ -23,7 +27,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - PostProcessing
   - 
   - 
   - 
