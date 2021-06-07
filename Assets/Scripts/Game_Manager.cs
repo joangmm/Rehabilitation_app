@@ -6,6 +6,7 @@ public class Game_Manager : MonoBehaviour
 {
 
     private int score;
+    private int finalScore;
     public Text scoreText;
 
     public Text fruitNotToGrabText;
@@ -34,6 +35,7 @@ public class Game_Manager : MonoBehaviour
     {
 
         score = 0;
+        finalScore = 0;
         SetScoreText(); //we set the score text to "0000" in the start.
 
         string str1 = "Do not collect the ";
@@ -70,11 +72,24 @@ public class Game_Manager : MonoBehaviour
 
         wrongBalls = 0;
         gameHasEnded = false;
+
     }
     
     void Start()
     {
-        //Cursor.visible = false; //hide the mouse
+        Cursor.visible = false;
+        
+    }
+
+    void Update()
+    {
+        
+        if(score != finalScore)
+        {
+            score += 1;
+
+            SetScoreText();
+        }
     }
 
     public string getColorNotToGrab()
@@ -86,20 +101,12 @@ public class Game_Manager : MonoBehaviour
     {
         wrongBalls++;
 
-        //if (wrongBalls <= 1) ///////////at the moment, we just want to restart if we hit a single wrong fruit
-        //{
-            
-            //score -= 5;
-            //Debug.Log("Wrong");
+        //if (wrongBalls <= 1){ ///////////at the moment, we just want to restart if we hit a single wrong fruit
+        FindObjectOfType<AudioManager>().Play("wrong");
+        FindObjectOfType<AudioManager>().StopPlaying("theme");
+        StartCoroutine(cameraShake.Shake(1.2f, 11.5f));
+        //}else{
 
-            FindObjectOfType<AudioManager>().Play("wrong");
-            FindObjectOfType<AudioManager>().StopPlaying("theme");
-
-            StartCoroutine(cameraShake.Shake(1.2f, 11.5f));
-
-        //}
-        //else
-        //{
             if (!gameHasEnded)
             {
                 gameHasEnded = true;
@@ -119,7 +126,8 @@ public class Game_Manager : MonoBehaviour
     {
         //Debug.Log("Nice!");
         Instantiate(floatingPoints, new Vector3(565.0f, 50.0f, 0.0f), Quaternion.identity);
-        score += 50;
+
+        finalScore += 50;
 
         FindObjectOfType<AudioManager>().Play("good");
         SetScoreText();
@@ -130,25 +138,25 @@ public class Game_Manager : MonoBehaviour
     {
         string str = "";
 
-        int sc = int.Parse(scoreText.text);
-
-        if (sc <= 0)
+        //int sc = int.Parse(scoreText.text);
+        
+        if (score <= 0)
         {
             str = "000";
         }
-        else if (sc <= 9 && sc > 0)
+        else if (score <= 9 && score > 0)
         {
             str = "000";
         }
-        else if(sc <= 99 && sc >= 10)
+        else if(score <= 99 && score >= 10)
         {
             str = "00";
         }
-        else if (sc <= 999 && sc >= 100)
+        else if (score <= 999 && score >= 100)
         {
             str = "0";
         }
-        else if(sc <= 9999 && sc >= 1000)
+        else if(score <= 9999 && score >= 1000)
         {
             str = "";
         }

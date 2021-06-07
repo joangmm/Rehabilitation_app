@@ -29,12 +29,14 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1.0f;
         GameIsPaused = false;
+        HideCursor();
     }
     void Pause()
     {
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0.0f;
         GameIsPaused = true;
+        ShowCursor();
     }
     public void LoadMenu()
     {
@@ -45,5 +47,15 @@ public class PauseMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+
+    public void HideCursor()
+    {
+        Cursor.visible = false;
+    }
+    public void ShowCursor()
+    {
+        Cursor.visible = true;
     }
 }
