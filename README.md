@@ -6,7 +6,7 @@ This Unity project uses [this](https://github.com/joangmm/starting_point) reposi
 Special thanks to my supervisor: **Pedro Omedas Morera**. Author: **Joan Garcia Marty**.
 
 
-Below, you will find a link to a video of the application in its current state, after having modified it taking into account the user feedback.
+Below, you will find a link to a video of the application in its final state, after having modified it taking into account the user feedback.
 
 [![Rehabilitation application using PoseNET](https://img.youtube.com/vi/H5bBnkUZX1Y/0.jpg)](https://www.youtube.com/watch?v=H5bBnkUZX1Y)
 
