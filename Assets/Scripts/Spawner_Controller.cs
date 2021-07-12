@@ -55,7 +55,7 @@ public class Spawner_Controller : MonoBehaviour
         }
     }
     public void Move(){
-        float rnd = Random.Range(-375, 350); //x-axis goes from -375 to 350 (limits of the physical movement in the tracking system)
+        float rnd = Random.Range(-350, 350); //x-axis goes from -350 to 350 (limits of the physical movement in the tracking system)
         transform.position = new Vector3( rnd, transform.position.y, transform.position.z);
     }
 
